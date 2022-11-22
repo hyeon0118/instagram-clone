@@ -7,10 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
         body {
             background: #fafafa;
             font-size: 13px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
         }
 
         b {
@@ -34,12 +40,74 @@
             color: rgb(200, 200, 200);
         }
 
+        nav {
+            position: fixed;
+            width: 245px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-right: 1px solid lightgray;
+            padding-left: 30px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            width: 100%;
+            height: 100px;
+            position: absolute;
+            left: 30px;
+            right: 0;
+            align-items: center;
+        }
+
+        #icon-container {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 400px;
+        }
+
+        .nav-list {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 25%;
+        }
+
+        .nav-list:hover {
+            color: black;
+            background: rgb(250, 250, 250);
+        }
+
+        .nav-icon {
+            margin-right: 15px;
+            font-size: 30px;
+        }
+
+        .icon-text {
+            font-size: 16px;
+        }
+
+        .icon-logo {
+            display: none;
+        }
+
+        #searchbar {
+            display: none;
+        }
+
         #main-container {
+            margin-left: 245px;
             display: flex;
             flex-direction: row;
             justify-content: center;
             position: relative;
-            padding-top: 60px;
+            padding-top: 20px;
+            z-index: -2;
         }
 
         #story {
@@ -47,7 +115,7 @@
             display: flex;
             flex-direction: row;
             border: 1px solid rgb(220, 220, 220);
-            border-radius: 3px;
+            border-radius: 5px;
             background: white;
             height: 100%;
             margin-bottom: 20px;
@@ -110,12 +178,13 @@
         }
 
 
-        .feed {
+        #feed {
             border: 1px solid rgb(220, 220, 220);
             border-radius: 5px;
             background: white;
             height: 100%;
             margin-top: 10px;
+
         }
 
         .gray-text {
@@ -184,17 +253,54 @@
             margin-top: 30px;
         }
 
-        @media only screen and (max-width: 480px) {
-            #feed-container {
-                width: 100%;
+        .modal_overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0, 0, 0, 0.8);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+        }
+
+
+        .modal_window {
+            background: white;
+            backdrop-filter: blur(13.5px);
+            -webkit-backdrop-filter: blur(13.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            width: 666px;
+            height: 709px;
+            position: relative;
+            padding: 10px;
+        }
+
+        @media only screen and (max-width: 1200px) {
+            nav {
+                width: 73px;
+                padding-left: 25px;
             }
 
-            #icon-container {
+            #main-container {
+                margin-left: 73px;
+            }
+
+            .icon-logo {
+                display: flex;
+            }
+
+            .basic-logo, .icon-text {
                 display: none;
             }
         }
 
-        @media only screen and (max-width: 800px) {
+        @media only screen and (max-width: 850px) {
             #main-container, #feed, #story {
                 width: 100%;
             }
@@ -205,33 +311,70 @@
             }
 
 
-            #searchbar, #friends, .for-wide {
+            #friends, .for-wide {
                 display: none;
             }
 
+            .modal_window {
+                width: 480px;
+            }
+
+            @media only screen and (max-width: 480px) {
+
+                #main-container {
+                    width: 100%;
+                }
+
+                #icon-container {
+                    display: none;
+                }
+
+                .modal_window {
+                    width: 400px;
+                }
+
+                #searchbar {
+                    display: flex;
+                }
+            }
 
         }
     </style>
 </head>
+
 <body>
-
 <!--navbar-->
-<nav class="navbar navbar-expand-lg bg-light"
-     style="position: fixed; width:100%; z-index:10;">
-    <section class="container-fluid" style="justify-content: space-between">
-        <a class="navbar-brand" href="#"><img style="height: 27px;"
-                                              src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"></a>
-        <input style="width:300px" class="form-control me-2" id="searchbar"
-               type="search" placeholder="Search" aria-label="Search">
-        <div id="icon-container">
-            <span class="material-symbols-rounded for-wide">home</span>
-            <span class="material-symbols-rounded for-wide">send</span>
-            <span class="material-symbols-rounded for-wide">explore</span>
-            <span class="material-symbols-rounded">add_circle</span>
-            <span class="material-symbols-rounded">favorite</span>
-
+<nav>
+    <div>
+        <a class="navbar-brand" href="#">
+            <img class="icon-logo" style="height:27px" alt="icon_logo"
+                 src="https://cdn-icons-png.flaticon.com/512/87/87390.png">
+            <img class="basic-logo" alt="logo" style="height: 27px;"
+                 src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
+        </a>
+    </div>
+    <input style="width:300px" class="hidden form-control me-2" id="searchbar"
+           type="search" placeholder="Search" aria-label="Search">
+    <div id="icon-container">
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">home</span><span
+                class="icon-text">Startseite</span></a>
         </div>
-    </section>
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">search</span><span
+                class="icon-text">Suche</span></a>
+        </div>
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">send</span><span
+                class="icon-text">Nachrichten</span></a></div>
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">favorite</span><span
+                class="icon-text">Benachrichtungen</span></a></div>
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">explore</span><span
+                class="icon-text">Entdecken</span></a></div>
+        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">add_circle</span><span
+                class="icon-text">Erstellen</span></a></div>
+    </div>
+    <div class="nav-list" style="position:absolute; bottom:30px; ">
+        <div><a href="#"><span class="nav-icon material-symbols-rounded">menu</span><span
+                class="icon-text">Mehr</span></a></div>
+    </div>
 </nav>
 <!--navbar end-->
 
@@ -265,49 +408,50 @@
 
         <!-- feed box -->
         {% for feed in feed_list %}
-        <div class="feed">
-            <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
-                <div class="small-photo-container"><img alt="profile-photo" class="small-photo"
-                                                        src={{ feed.profile_image }}>
+            <div id="feed">
+                <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
+                    <div class="small-photo-container"><img alt="profile-photo" class="small-photo"
+                                                            src={{ feed.profile_image }}>
+                    </div>
+                    <div style="display:flex; flex-direction: column">
+                        <div><b>{{ feed.user_id }}</b></div>
+                        <!--<div>user location</div> 나중에 추가하기-->
+                    </div>
                 </div>
-                <div style="display:flex; flex-direction: column">
-                    <div><b>{{ feed.user_id }}</b></div>
-                    <!--<div>user location</div> 나중에 추가하기-->
+                <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
+                                                       src={{ feed.image }}>
                 </div>
-            </div>
-            <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
-                                                   src={{ feed.image }}>
-            </div>
-            <div style="padding: 10px;">
-                <div style="display:flex; flex-direction: row; justify-content: space-between">
-                    <div id="feed-icons" style="display:flex; flex-direction: row; width: 100px">
-                        <span class="material-symbols-rounded">favorite</span>
-                        <span class="material-symbols-rounded">chat_bubble</span>
-                        <span class="material-symbols-rounded">send</span>
+                <div style="padding: 10px;">
+                    <div style="display:flex; flex-direction: row; justify-content: space-between">
+                        <div id="feed-icons" style="display:flex; flex-direction: row; width: 100px">
+                            <span class="material-symbols-rounded">favorite</span>
+                            <span class="material-symbols-rounded">chat_bubble</span>
+                            <span class="material-symbols-rounded">send</span>
+                        </div>
+                        <div>
+                            <span class="material-symbols-rounded">bookmark</span>
+                        </div>
                     </div>
                     <div>
-                        <span class="material-symbols-rounded">bookmark</span>
+                        <div style="padding: 5px 0;"><b>Gefällt {{ feed.like_count }} Mal</b></div>
+                        <div><span
+                                style="margin-right:5px;"><b>{{ feed.user_id }}</b></span><span>{{ feed.content }}</span><span
+                                style="margin-left: 15px;" class="gray-text">mehr</span>
+                        </div>
+                        <div class="gray-text" style="padding: 5px 0">Alle 20 Kommentare ansehen</div>
+                        <div style="font-size: 80%"><span style="margin-right: 15px;"
+                                                          class="gray-text">VOR 3 STUNDEN</span><span><b>Übersetzung anzeigen</b></span>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <div style="padding: 5px 0;"><b>Gefällt {{ feed.like_count }} Mal</b></div>
-                    <div><span style="margin-right:5px;"><b>{{ feed.user_id }}</b></span><span>{{ feed.content }}</span><span
-                            style="margin-left: 15px;" class="gray-text">mehr</span>
-                    </div>
-                    <div class="gray-text" style="padding: 5px 0">Alle 20 Kommentare ansehen</div>
-                    <div style="font-size: 80%"><span style="margin-right: 15px;"
-                                                      class="gray-text">VOR 3 STUNDEN</span><span><b>Übersetzung anzeigen</b></span>
-                    </div>
+                <div style="padding: 10px 5px; display: flex; flex-direction: row; justify-content: space-around; border:2px solid #fafafa;">
+                    <span style="margin-right: 5px" class="material-symbols-rounded">sentiment_satisfied</span>
+                    <label>
+                        <input style="background: none; border: none; width: 400px" placeholder="Write a comment">
+                    </label>
+                    <button>Send</button>
                 </div>
             </div>
-            <div style="padding: 10px 5px; display: flex; flex-direction: row; justify-content: space-around; border:2px solid #fafafa;">
-                <span style="margin-right: 5px" class="material-symbols-rounded">sentiment_satisfied</span>
-                <label>
-                    <input style="background: none; border: none; width: 400px" placeholder="Write a comment">
-                </label>
-                <button>Send</button>
-            </div>
-        </div>
         {% endfor %}
         <!--feed box end-->
     </div>
@@ -383,9 +527,33 @@
 
     <!--friends recommend end-->
 </div>
+
+<!--Modal window-->
+<div class="modal_overlay">
+    <div class="modal_window">
+        <div style="text-align: center;">
+            Neuen Beitrag erstellen
+        </div>
+    </div>
+</div>
+<!--Modal window end-->
+
+<script>
+    $('#nav_bar_add_box').click(function () {
+        $('.modal_overlay').css({
+            "display": "flex"
+        });
+        $(document.body).css({
+            "overflow": "hidden"
+        })
+    });
+
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+
 
 </body>
 </html>
