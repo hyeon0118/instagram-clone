@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hyeonstagram</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #fafafa;
+            font-size: 13px;
+        }
+
+        b {
+            font-weight: 600;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        button {
+            background: none;
+            border: none;
+            color: #4285F4;
+            font-weight: 600;
+        }
+
+        footer {
+            font-size: 80%;
+            margin: 30px 0;
+            color: rgb(200, 200, 200);
+        }
+
+        #main-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        #story {
+            padding: 10px 10px;
+            display: flex;
+            flex-direction: row;
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 3px;
+            background: white;
+            height: 100%;
+            margin-bottom: 20px;
+        }
+
+        .story-container {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            margin: 0 10px;
+            justify-content: flex-start;
+        }
+
+        .big-photo-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .empty-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 70%;
+            background: white;
+            margin: 2px;
+        }
+
+        .rainbow-circle {
+            width: 68px;
+            height: 68px;
+            border-radius: 70%;
+            background-image: linear-gradient(to left bottom, #c128bf, #d324ad, #e0299c, #e8348c, #ec427e, #f45072, #fa5f67, #fc6f5e, #ff8452, #ff9b48, #feb242, #f6c944);
+            display: flex;
+        }
+
+        .gray-circle {
+            width: 68px;
+            height: 68px;
+            border-radius: 70%;
+            background: lightgray;
+            display: flex;
+        }
+
+        .empty-circle .big-photo-container {
+            margin: 2px;
+        }
+
+        .big-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #feed-container {
+            width: 480px;
+            margin-top: 10px;
+            margin-right: 300px;
+            position: absolute
+        }
+
+
+        .feed {
+            border: 1px solid rgb(220, 220, 220);
+            border-radius: 5px;
+            background: white;
+            height: 100%;
+            margin-top: 10px;
+        }
+
+        .gray-text {
+            color: rgb(150, 150, 150)
+        }
+
+        .profile {
+            padding: 10px;
+        }
+
+        .profile > div:first-of-type {
+            margin-right: 10px;
+        }
+
+        .small-photo-container {
+            width: 40px;
+            height: 40px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
+        .small-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .feed-photo-container {
+            width: 100%;
+        }
+
+        #feed-photo {
+            width: 100%;
+        }
+
+        #feed-icons span {
+            margin-right: 10px;
+        }
+
+        #friends {
+            width: 300px;
+            height: 400px;
+            background: none;
+            margin-top: 10px;
+            margin-left: 500px;
+            position: fixed;
+        }
+
+        .friend-list {
+            padding: 10px 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between
+        }
+
+        .friend-left-box {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .friend-info {
+            margin-left: 10px;
+        }
+
+        .copyright {
+            margin-top: 30px;
+        }
+
+        @media only screen and (max-width: 480px) {
+            #feed-container {
+                width: 100%;
+            }
+
+            #icon-container {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 800px) {
+            #main-container, #feed, #story {
+                width: 100%;
+            }
+
+            #feed-container {
+                width: 480px;
+                margin: 0;
+            }
+
+
+            #searchbar, #friends, .for-wide {
+                display: none;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+<!--navbar-->
+<nav class="navbar navbar-expand-lg bg-light"
+     style="position: fixed; width:100%; z-index:10;">
+    <section class="container-fluid" style="justify-content: space-between">
+        <a class="navbar-brand" href="#"><img style="height: 27px;"
+                                              src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"></a>
+        <input style="width:300px" class="form-control me-2" id="searchbar"
+               type="search" placeholder="Search" aria-label="Search">
+        <div id="icon-container">
+            <span class="material-symbols-rounded for-wide">home</span>
+            <span class="material-symbols-rounded for-wide">send</span>
+            <span class="material-symbols-rounded for-wide">explore</span>
+            <span class="material-symbols-rounded">add_circle</span>
+            <span class="material-symbols-rounded">favorite</span>
+
+        </div>
+    </section>
+</nav>
+<!--navbar end-->
+
+<div id="main-container">
+    <div id="feed-container">
+        <!--story div-->
+        <div id="story">
+            <div class="story-container">
+                <div class="rainbow-circle">
+                    <div class="empty-circle">
+                        <div class="big-photo-container"><img alt="story-photo" class="big-photo"
+                                                              src="https://static.wikia.nocookie.net/414489b4-4488-4f3b-8df8-290c0a3788b5/scale-to-width/755">
+
+                        </div>
+                    </div>
+                </div>
+                <div>mando</div>
+            </div>
+            <div class="story-container">
+                <div class="gray-circle">
+                    <div class="empty-circle">
+                        <div class="big-photo-container"><img alt="story-photo" class="big-photo"
+                                                              src="https://i.pinimg.com/736x/18/70/28/1870286df48feb862c26e7437707683d--vader-helmet-darth-vader-star-wars.jpg">
+                        </div>
+                    </div>
+                </div>
+                <div>DarthV</div>
+            </div>
+        </div>
+        <!--story div end-->
+
+
+        <div class="feed">
+            <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
+                <div class="small-photo-container"><img alt="profile-photo" class="small-photo"
+                                                        src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
+                </div>
+                <div style="display:flex; flex-direction: column">
+                    <div><b>hyeon0118</b></div>
+                    <!--<div>user location</div> 나중에 추가하기-->
+                </div>
+            </div>
+            <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
+                                                   src="https://sofiaadventures.com/wp-content/uploads/2019/04/shutterstock_1017141046.jpg">
+            </div>
+            <div style="padding: 10px;">
+                <div style="display:flex; flex-direction: row; justify-content: space-between">
+                    <div id="feed-icons" style="display:flex; flex-direction: row; width: 100px">
+                        <span class="material-symbols-rounded">favorite</span>
+                        <span class="material-symbols-rounded">chat_bubble</span>
+                        <span class="material-symbols-rounded">send</span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-rounded">bookmark</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="padding: 5px 0;"><b>Gefällt 1,234 Mal</b></div>
+                    <div><span style="margin-right:5px;"><b>hyeon0118</b></span><span>feed text</span><span
+                            style="margin-left: 15px;" class="gray-text">mehr</span>
+                    </div>
+                    <div class="gray-text" style="padding: 5px 0">Alle 20 Kommentare ansehen</div>
+                    <div style="font-size: 80%"><span style="margin-right: 15px;"
+                                                      class="gray-text">VOR 3 STUNDEN</span><span><b>Übersetzung anzeigen</b></span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 10px 5px; display: flex; flex-direction: row; justify-content: space-around; border:2px solid #fafafa;">
+                <span style="margin-right: 5px" class="material-symbols-rounded">sentiment_satisfied</span>
+                <label>
+                    <input style="background: none; border: none; width: 400px" placeholder="Write a comment">
+                </label>
+                <button>Send</button>
+            </div>
+        </div>
+
+        <div class="feed">
+            <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
+                <div class="small-photo-container"><img alt="profile-photo" class="small-photo"
+                                                        src="https://cdn.dribbble.com/users/1338391/screenshots/15264109/media/1febee74f57d7d08520ddf66c1ff4c18.jpg?compress=1&resize=400x300&vertical=top">
+                </div>
+                <div style="display:flex; flex-direction: column">
+                    <div><b>jchjs1010</b></div>
+                    <!--<div>user location</div> 나중에 추가하기-->
+                </div>
+            </div>
+            <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
+                                                   src="https://sofiaadventures.com/wp-content/uploads/2019/04/shutterstock_1017141046.jpg">
+            </div>
+            <div style="padding: 10px;">
+                <div style="display:flex; flex-direction: row; justify-content: space-between">
+                    <div id="feed-icons" style="display:flex; flex-direction: row; width: 100px">
+                        <span class="material-symbols-rounded">favorite</span>
+                        <span class="material-symbols-rounded">chat_bubble</span>
+                        <span class="material-symbols-rounded">send</span>
+                    </div>
+                    <div>
+                        <span class="material-symbols-rounded">bookmark</span>
+                    </div>
+                </div>
+                <div>
+                    <div style="padding: 5px 0;"><b>Gefällt 1,234 Mal</b></div>
+                    <div><span style="margin-right:5px;"><b>jchjs1010</b></span><span>feed text</span><span
+                            style="margin-left: 15px;" class="gray-text">mehr</span>
+                    </div>
+                    <div class="gray-text" style="padding: 5px 0">Alle 20 Kommentare ansehen</div>
+                    <div style="font-size: 80%"><span style="margin-right: 15px;"
+                                                      class="gray-text">VOR 3 STUNDEN</span><span><b>Übersetzung anzeigen</b></span>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 10px 5px; display: flex; flex-direction: row; justify-content: space-around; border:2px solid #fafafa;">
+                <span style="margin-right: 5px" class="material-symbols-rounded">sentiment_satisfied</span>
+                <label>
+                    <input style="background: none; border: none; width: 400px" placeholder="Write a comment">
+                </label>
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!--friends recommend-->
+    <div id="friends">
+        <div id="myprofile"
+             style="display: flex; flex-direction: row; justify-content: space-between; padding: 15px 0;">
+            <div style="display: flex; flex-direction: row">
+                <div style="margin-right: 5px" class="big-photo-container">
+                    <img alt="my-profile-photo" class="big-photo"
+                         src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
+                </div>
+                <div id="myprofile-info" style="text-align: center; vertical-align: middle;">
+                    <div>muzikmusiker</div>
+                    <div>Hyeonji Sung</div>
+                </div>
+            </div>
+            <button>Wechseln</button>
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-between; font-weight: 600; margin-top:5px;"><span
+                class="gray-text" style="font-size:105%">Vorschläge für dich</span><span>Alle ansehen</span>
+        </div>
+        <div id="friend-recommend" style="margin-top:5px;">
+            <div class="friend-list">
+                <div class="friend-left-box">
+                    <div class="small-photo-container">
+                        <img alt="friend-image" class="small-photo"
+                             src="https://thypix.com/wp-content/uploads/2021/11/sponge-bob-profile-picture-thypix-m.jpg">
+                    </div>
+                    <div class="friend-info">
+                        <div>zzung.yeong_kochen</div>
+                        <div class="gray-text">heeeeeseung_lee ist Follower</div>
+                    </div>
+                </div>
+                <button>Folgen</button>
+            </div>
+            <div class="friend-list">
+                <div class="friend-left-box">
+                    <div class="small-photo-container">
+                        <img alt="friend-image" class="small-photo"
+                             src="https://i.etsystatic.com/36532523/r/il/97ae46/4078306713/il_340x270.4078306713_n74s.jpg">
+                    </div>
+                    <div class="friend-info">
+                        <div>pinkHair1010</div>
+                        <div class="gray-text">mando ist Follower</div>
+                    </div>
+                </div>
+                <button>Folgen</button>
+            </div>
+            <div class="friend-list">
+                <div class="friend-left-box">
+                    <div class="small-photo-container">
+                        <img alt="friend-image" class="small-photo"
+                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png">
+                    </div>
+                    <div class="friend-info">
+                        <div>hi_samantha</div>
+                        <div class="gray-text">DarthV ist Follower</div>
+                    </div>
+                </div>
+                <button>Folgen</button>
+            </div>
+        </div>
+        <footer>
+            <div>Info · Hilfe · Presse · API · Jobs · Datenrichtlinie ·</div>
+            <div>Nutzungsbedingungen und Impressum ·</div>
+            <div>NetzDG/UrhDaG/Ranking von Inhalten · Standorte ·</div>
+            <div>Sparache</div>
+            <div class="copyright">© 2022 INSTAGRAM FROM META</div>
+        </footer>
+    </div>
+
+    <!--friends recommend end-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+</body>
+</html>
