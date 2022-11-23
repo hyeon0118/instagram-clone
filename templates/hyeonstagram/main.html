@@ -48,17 +48,22 @@
             flex-direction: column;
             background: white;
             border-right: 1px solid lightgray;
-            padding-left: 30px;
         }
 
-        .navbar-brand {
+        #icon-logo-container {
+            padding: 5px 10px;
             display: flex;
-            width: 100%;
-            height: 100px;
+            max-width: 100%;
+            height: 50px;
+            margin: 50px 0;
             position: absolute;
-            left: 30px;
-            right: 0;
+            left: 13px;
+            border-radius: 25px;
             align-items: center;
+        }
+
+        #icon-logo-container img {
+            max-width: 100%;
         }
 
         #icon-container {
@@ -69,13 +74,19 @@
             height: 400px;
         }
 
+        .basic-logo {
+            height: 27px;
+        }
+
         .nav-list {
-            width: 100%;
-            height: 30px;
+            max-width: 100%;
+            height: 50px;
             display: flex;
             flex-direction: row;
             align-items: center;
-            border-radius: 25%;
+            border-radius: 25px;
+            margin: 0 10px;
+            padding: 5px 10px;
         }
 
         .nav-list:hover {
@@ -284,15 +295,22 @@
         @media only screen and (max-width: 1200px) {
             nav {
                 width: 73px;
-                padding-left: 25px;
             }
 
             #main-container {
                 margin-left: 73px;
             }
 
+
             .icon-logo {
                 display: flex;
+                width: 25px;
+            }
+
+
+            #icon-logo-container:hover {
+                background: rgb(250, 250, 250);
+                width: 50px;
             }
 
             .basic-logo, .icon-text {
@@ -311,7 +329,7 @@
             }
 
 
-            #friends, .for-wide {
+            #friends {
                 display: none;
             }
 
@@ -345,35 +363,51 @@
 <body>
 <!--navbar-->
 <nav>
-    <div>
-        <a class="navbar-brand" href="#">
-            <img class="icon-logo" style="height:27px" alt="icon_logo"
+    <a href="#">
+        <div id="icon-logo-container">
+
+            <img class="icon-logo" alt="icon_logo"
                  src="https://cdn-icons-png.flaticon.com/512/87/87390.png">
-            <img class="basic-logo" alt="logo" style="height: 27px;"
+            <img class="basic-logo" alt="logo"
                  src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
-        </a>
-    </div>
+
+        </div>
+    </a>
     <input style="width:300px" class="hidden form-control me-2" id="searchbar"
            type="search" placeholder="Search" aria-label="Search">
     <div id="icon-container">
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">home</span><span
-                class="icon-text">Startseite</span></a>
-        </div>
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">search</span><span
-                class="icon-text">Suche</span></a>
-        </div>
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">send</span><span
-                class="icon-text">Nachrichten</span></a></div>
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">favorite</span><span
-                class="icon-text">Benachrichtungen</span></a></div>
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">explore</span><span
-                class="icon-text">Entdecken</span></a></div>
-        <div class="nav-list"><a href="#"><span class="nav-icon material-symbols-rounded">add_circle</span><span
-                class="icon-text">Erstellen</span></a></div>
+        <a href="#">
+            <div class="nav-list"><span id="home" class="nav-icon material-symbols-rounded">home</span><span
+                    class="icon-text">Startseite</span></div>
+        </a>
+        <a href="#">
+            <div class="nav-list"><span id="search" class="nav-icon material-symbols-rounded">search</span><span
+                    class="icon-text">Suche</span></div>
+        </a>
+        <a href="#">
+            <div class="nav-list"><span id="send" class="nav-icon material-symbols-rounded bottom-nav">send</span><span
+                    class="icon-text">Nachrichten</span></div>
+        </a>
+        <a href="#">
+            <div class="nav-list"><span id="favorite"
+                                        class="nav-icon material-symbols-rounded top-nav">favorite</span><span
+                    class="icon-text">Benachrichtungen</span></div>
+        </a>
+        <a href="#">
+            <div class="nav-list"><span id="explore" class="nav-icon material-symbols-rounded bottom-nav">explore</span><span
+                    class="icon-text">Entdecken</span></div>
+        </a>
+        <a href="#">
+            <div id="nav-bar-add-box" class="nav-list"><span id="add-circle"
+                                                             class="nav-icon material-symbols-rounded bottom-nav">add_circle</span><span
+                    class="icon-text">Erstellen</span></div>
+        </a>
     </div>
-    <div class="nav-list" style="position:absolute; bottom:30px; ">
-        <div><a href="#"><span class="nav-icon material-symbols-rounded">menu</span><span
-                class="icon-text">Mehr</span></a></div>
+    <div style="position:absolute; bottom:30px; width:100%;">
+        <a href="#">
+            <div class="nav-list"><span class="nav-icon material-symbols-rounded">menu</span><span
+                    class="icon-text">Mehr</span></div>
+        </a>
     </div>
 </nav>
 <!--navbar end-->
@@ -547,6 +581,13 @@
             "overflow": "hidden"
         })
     });
+
+    $('.nav-list').hover(function () {
+        $(".nav-icon", this).css("transform", "scale(1.07)");
+    }, function () {
+        $(".nav-icon", this).css("transform", "scale(1)");
+    })
+
 
 </script>
 
