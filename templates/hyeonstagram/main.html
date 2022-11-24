@@ -181,7 +181,7 @@
             margin: 2px;
         }
 
-        .big-photo {
+        .photo {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -216,6 +216,14 @@
             margin-right: 10px;
         }
 
+
+        .smallest-photo-container {
+            width: 20px;
+            height: 20px;
+            border-radius: 70%;
+            overflow: hidden;
+        }
+
         .small-photo-container {
             width: 40px;
             height: 40px;
@@ -223,11 +231,6 @@
             overflow: hidden;
         }
 
-        .small-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
 
         .feed-photo-container {
             width: 100%;
@@ -273,7 +276,7 @@
         .modal-overlay {
             width: 100%;
             height: 100%;
-            display: none;
+            display: flex;
             position: absolute;
             left: 0;
             right: 0;
@@ -294,7 +297,7 @@
             min-width: 300px;
             width: 50%;
             max-width: 600px;
-            min-height: 700px;
+            min-height: 500px;
             height: 50%;
             position: relative;
         }
@@ -312,26 +315,6 @@
             cursor: pointer;
         }
 
-        #modal-bottom {
-            bottom: 0;
-            display: none;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 10px;
-        }
-
-        .modal-bottom-icons {
-            color: white;
-            padding: 5px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            margin: 0 5px;
-        }
-
-        .modal-bottom-icons:hover {
-            background: rgb(0, 0, 0, 0.4);
-            cursor: pointer;
-        }
 
         #modal-close-button {
             color: white;
@@ -346,15 +329,29 @@
             font-size: 27px;
         }
 
+        #before-photo-drop-zone {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+
+        }
+
         .after-photo {
             visibility: hidden;
         }
 
         #drop-zone {
             display: flex;
-            flex-direction: column;
+            position: relative;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
+            height: 100%;
+            width: 100%;
         }
 
         #add-photo-text {
@@ -372,6 +369,29 @@
             margin-top: 10px;
             border-radius: 10px;
             cursor: pointer;
+        }
+
+        #feed-edit-container {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        #feed-text-input {
+            height: 90%;
+        }
+
+        #feed-text-input input {
+            border: none;
+        }
+
+        #drop-zone-profile {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding: 20px 0;
         }
 
         @media only screen and (max-width: 1200px) {
@@ -502,27 +522,33 @@
             <div>
                 <span class="after-photo modal-top-icons material-symbols-outlined">arrow_back</span>
             </div>
-            <div style="text-align: center;">
+            <div id="modal-window-title" style="text-align: center;">
                 Neuen Beitrag erstellen
             </div>
             <div class="after-photo modal-top-icons">
-                Weiter
+                Teilen
             </div>
         </div>
-        <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" style="height:90%;">
-            <div id="add-photo-icon" class="before-photo material-symbols-outlined" style="font-size:100px">
-                add_photo_alternate
+        <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
+            <div id="feed-edit-container" class="after-photo" style="display:none;">
+                <div id="drop-zone-profile">
+                    <div class="smallest-photo-container"><img class="photo"
+                                                               src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
+                    </div>
+                    <div>muzikmusiker</div>
+                </div>
+                <div id="feed-text-input">
+                    <label>
+                        <input type="text" placeholder="Bildunterschrift verfassen ...">
+                    </label>
+                </div>
             </div>
-            <div id="add-photo-text" class="before-photo">Ziehe Fotos und Videos hierher</div>
-            <div id="add-photo-button" class="before-photo">Vom Computer auswählen</div>
-            <div id="modal-bottom">
-                <div id="modal-bottom-left">
-                    <span class="modal-bottom-icons material-symbols-outlined">expand_content</span>
-                    <span class="modal-bottom-icons material-symbols-outlined">zoom_in</span>
+            <div id="before-photo-drop-zone">
+                <div id="add-photo-icon" class="before-photo material-symbols-outlined" style="font-size:100px">
+                    add_photo_alternate
                 </div>
-                <div id="modal-bottom-right">
-                    <span class="modal-bottom-icons material-symbols-outlined" style="font-size:20px; padding: 9px;">filter_none</span>
-                </div>
+                <div id="add-photo-text" class="before-photo">Ziehe Fotos und Videos hierher</div>
+                <div id="add-photo-button" class="before-photo">Vom Computer auswählen</div>
             </div>
         </div>
 
@@ -537,7 +563,7 @@
             <div class="story-container">
                 <div class="rainbow-circle">
                     <div class="empty-circle">
-                        <div class="big-photo-container"><img alt="story-photo" class="big-photo"
+                        <div class="big-photo-container"><img alt="story-photo" class="photo"
                                                               src="https://static.wikia.nocookie.net/414489b4-4488-4f3b-8df8-290c0a3788b5/scale-to-width/755">
 
                         </div>
@@ -548,7 +574,7 @@
             <div class="story-container">
                 <div class="gray-circle">
                     <div class="empty-circle">
-                        <div class="big-photo-container"><img alt="story-photo" class="big-photo"
+                        <div class="big-photo-container"><img alt="story-photo" class="photo"
                                                               src="https://i.pinimg.com/736x/18/70/28/1870286df48feb862c26e7437707683d--vader-helmet-darth-vader-star-wars.jpg">
                         </div>
                     </div>
@@ -562,7 +588,7 @@
         {% for feed in feed_list %}
             <div id="feed">
                 <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
-                    <div class="small-photo-container"><img alt="profile-photo" class="small-photo"
+                    <div class="small-photo-container"><img alt="profile-photo" class="photo"
                                                             src={{ feed.profile_image }}>
                     </div>
                     <div style="display:flex; flex-direction: column">
@@ -614,7 +640,7 @@
              style="display: flex; flex-direction: row; justify-content: space-between; padding: 15px 0;">
             <div style="display: flex; flex-direction: row">
                 <div style="margin-right: 5px" class="big-photo-container">
-                    <img alt="my-profile-photo" class="big-photo"
+                    <img alt="my-profile-photo" class="photo"
                          src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
                 </div>
                 <div id="myprofile-info" style="text-align: center; vertical-align: middle;">
@@ -631,7 +657,7 @@
             <div class="friend-list">
                 <div class="friend-left-box">
                     <div class="small-photo-container">
-                        <img alt="friend-image" class="small-photo"
+                        <img alt="friend-image" class="photo"
                              src="https://thypix.com/wp-content/uploads/2021/11/sponge-bob-profile-picture-thypix-m.jpg">
                     </div>
                     <div class="friend-info">
@@ -644,7 +670,7 @@
             <div class="friend-list">
                 <div class="friend-left-box">
                     <div class="small-photo-container">
-                        <img alt="friend-image" class="small-photo"
+                        <img alt="friend-image" class="photo"
                              src="https://i.etsystatic.com/36532523/r/il/97ae46/4078306713/il_340x270.4078306713_n74s.jpg">
                     </div>
                     <div class="friend-info">
@@ -657,7 +683,7 @@
             <div class="friend-list">
                 <div class="friend-left-box">
                     <div class="small-photo-container">
-                        <img alt="friend-image" class="small-photo"
+                        <img alt="friend-image" class="photo"
                              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png">
                     </div>
                     <div class="friend-info">
@@ -685,15 +711,20 @@
         $('.modal-overlay').css({
             "display": "flex"
         });
+
         $(document.body).css({
             "overflow": "hidden"
         })
     });
 
-    $('#modal-close-button').click(function () {
+    $('#modal-close-button').click(function (event) {
         $('.modal-overlay').css({
             "display": "none"
         })
+        alert('Wenn du jetzt abbrichst, werden deine Änderungen nicht gespeichert.')
+        if (event.dataTransfer.dropEffect !== 'none') {
+            $(this).remove();
+        }
     })
 
     $('.nav-list').hover(function () {
@@ -710,15 +741,15 @@
     function dragOver(e) {
         e.stopPropagation();
         e.preventDefault();
-        if (e.type == "dragover") {
-            $(e.target).css({
+        if (e.type === "dragover") {
+            $("#drop-zone").css({
                 "background": "#fafafa"
             })
             $('#add-photo-icon').css({
                 "color": "rgb(62, 140, 228)"
             })
         } else {
-            $(e.target).css({
+            $("#drop-zone").css({
                 "background": "white"
             })
             $('#add-photo-icon').css({
@@ -733,23 +764,37 @@
         dragOver(e);
 
         e.dataTransfer = e.originalEvent.dataTransfer;
-        var files = e.target.files || e.dataTransfer.files;
+        let files = e.target.files || e.dataTransfer.files;
 
         if (files[0].type.match(/image.*/)) {
-            $(e.target).css({
-                "background-image": "url(" + window.URL.createObjectURL(files[0]) + ")",
-                "outline": "none",
-                "background-size": "100% 100%"
-            });
+            $("#drop-zone").prepend("<img alt='uploaded photo' id='uploaded-photo' src='" + window.URL.createObjectURL(files[0]) + "'>")
+                .css({
+                    "outline": "none",
+                    "background-size": "100% 100%",
+                })
+            $("#uploaded-photo").css({
+                "width": "50%",
+                "height": "100%",
+                "object-fit": "contain",
+            })
+            $("#modal-window").css({
+                "max-width": "800px",
+                "width": "70%"
+            })
+            $("#feed-edit-container").css({
+                "display": "flex",
+                "width": "50%"
+            })
             $(".before-photo").css({
                 "display": "none"
-            })
+            });
             $(".after-photo").css({
                 "visibility": "visible"
-            })
+            });
             $("#modal-bottom").css({
                 "display": "flex"
-            })
+            });
+            document.getElementById("modal-window-title").textContent = "Zuschneiden"
         } else {
             alert("Diese Datei wird nicht unterstützt")
         }
