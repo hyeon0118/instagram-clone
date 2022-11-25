@@ -25,6 +25,10 @@
             text-decoration: none;
         }
 
+        a:hover {
+            color: black !important;
+        }
+
         b {
             font-weight: 600;
         }
@@ -377,14 +381,28 @@
             height: 100%;
             position: relative;
             padding: 0 10px;
+            border-left: 1px solid lightgray;
         }
 
         #feed-text-input {
             height: 90%;
         }
 
-        #feed-text-input input {
+        #feed-textarea {
             border: none;
+            width: 100%;
+            height: 90%;
+        }
+
+        #feed-textarea:focus {
+            border: none;
+            overflow: hidden;
+            outline: none;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            resize: none;
+            color: lightgray;
         }
 
         #drop-zone-profile {
@@ -525,7 +543,7 @@
             <div id="modal-window-title" style="text-align: center;">
                 Neuen Beitrag erstellen
             </div>
-            <div class="after-photo modal-top-icons">
+            <div style="color:rgb(62, 140, 228); font-weight:600;" class="after-photo modal-top-icons">
                 Teilen
             </div>
         </div>
@@ -538,9 +556,8 @@
                     <div>muzikmusiker</div>
                 </div>
                 <div id="feed-text-input">
-                    <label>
-                        <input type="text" placeholder="Bildunterschrift verfassen ...">
-                    </label>
+                    <textarea id="feed-textarea" name="feed-textarea"
+                              placeholder="Bildunterschrift verfassen ..."></textarea>
                 </div>
             </div>
             <div id="before-photo-drop-zone">
@@ -788,6 +805,9 @@
             $(".before-photo").css({
                 "display": "none"
             });
+            $("#before-photo-drop-zone").css({
+                "display": "none"
+            })
             $(".after-photo").css({
                 "visibility": "visible"
             });
