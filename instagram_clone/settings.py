@@ -128,3 +128,6 @@ MEDIA_URL = '/media/'
 
 # path to a directory where uploaded file will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# custom user model
+AUTH_USER_MODEL = "user.User"
