@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class User(AbstractBaseUser):
-    profile_image = models.TextField();
+    profile_image = models.TextField(default="/media/default_profile_photo.png");
     user_id = models.CharField(max_length=24, unique=True)
     user_name = models.CharField(max_length=24)
     email = models.EmailField(unique=True)

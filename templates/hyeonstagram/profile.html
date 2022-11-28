@@ -127,6 +127,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             position: relative;
             padding-top: 20px;
             z-index: -2;
@@ -312,6 +313,17 @@
             padding: 20px 0;
         }
 
+        .profile-feed-nav-list {
+            margin: 0 15px;
+        }
+
+        .follower-box-list {
+            margin-right: 10px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
         @media only screen and (max-width: 1200px) {
             nav {
                 width: 73px;
@@ -479,26 +491,42 @@
 <!--Modal window end-->
 
 
-<div id="profile-container">
-    <div id="profile-box" style="display:flex; flex-direction: row; justify-content: center;">
-        <div id="big-profile-image">
-            <div class="big-photo-container"><img class="photo" src="{{ user.profile_image }}"></div>
+<div id="profile-container" style="padding-top: 50px;">
+    <div id="profile-box"
+         style="width: 90%; max-width: 600px; display:flex; flex-direction: row; margin-bottom: 50px;">
+        <div id="big-profile-image" style="margin-right: 50px;">
+            <div class="big-photo-container" style="height: 130px; width: 130px;"><img class="photo"
+                                                                                       src="{{ user.profile_image }}">
+            </div>
         </div>
         <div id="profile-info-box"
-             style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
-            <div id="user-id-box" style="display:flex; flex-direction: row;">
-                <div>{{ user.user_id }}</div>
-                <button>Profil bearbeiten</button>
-                <div>Setting button</div>
+             style="display:flex; flex-direction: column; align-items: center;">
+            <div id="user-id-box"
+                 style="width: 100%; display:flex; flex-direction: row; align-items: center;">
+                <div style="font-size: 30px; font-weight: 300; margin-right: 20px">{{ user.user_id }}</div>
+                <button style="color: black; border: 1px solid lightgray; padding: 0 10px; height: 30px; border-radius: 7px;">
+                    Profil bearbeiten
+                </button>
+                <div style="margin-left: 10px;"><span class="nav-icon material-symbols-rounded">settings</span>
+                </div>
             </div>
-            <div id=" follower-box" style="display:flex; flex-direction: row;">
-                <div>{{ user.feed_number }} Beiträge</div>
-                <div>{{ user.follower_number }} Follower</div>
-                <div>{{ user.following_number }} abonniert</div>
+            <div id=" follower-box"
+                 style="width: 100%; justify-content: space-between; margin: 20px 0; display:flex; flex-direction: row;">
+                <div class="follower-box-list"><span
+                        style="font-weight: 500; margin-right: 5px;">{{ user.feed_number }} </span> Beiträge
+                </div>
+                <div class="follower-box-list"><span
+                        style="font-weight: 500; margin-right: 5px;">{{ user.follower_number }} </span>
+                    Follower
+                </div>
+                <div class="follower-box-list"><span
+                        style="font-weight: 500; margin-right: 5px;">{{ user.following_number }} </span>
+                    abonniert
+                </div>
             </div>
-            <div id="profile-info" style="display:flex; flex-direction: column">
-                <div>{{ user.user_name }}</div>
-                <div>{{ user.profile_text }}</div>
+            <div id="profile-info" style="display:flex; flex-direction: column; width: 100%; ">
+                <div style="font-size: 15px; font-weight: 700;">{{ user.user_name }}</div>
+                <div style="font-size: 15px">{{ user.profile_text }}</div>
             </div>
         </div>
     </div>
