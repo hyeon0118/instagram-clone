@@ -122,33 +122,14 @@
             display: none;
         }
 
-        #main-container {
+        #profile-container {
             margin-left: 245px;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             justify-content: center;
             position: relative;
             padding-top: 20px;
             z-index: -2;
-        }
-
-        #story {
-            padding: 10px 10px;
-            display: flex;
-            flex-direction: row;
-            border: 1px solid rgb(220, 220, 220);
-            border-radius: 5px;
-            background: white;
-            height: 100%;
-            margin-bottom: 20px;
-        }
-
-        .story-container {
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            margin: 0 10px;
-            justify-content: flex-start;
         }
 
         .big-photo-container {
@@ -158,29 +139,6 @@
             overflow: hidden;
         }
 
-        .empty-circle {
-            width: 64px;
-            height: 64px;
-            border-radius: 70%;
-            background: white;
-            margin: 2px;
-        }
-
-        .rainbow-circle {
-            width: 68px;
-            height: 68px;
-            border-radius: 70%;
-            background-image: linear-gradient(to left bottom, #c128bf, #d324ad, #e0299c, #e8348c, #ec427e, #f45072, #fa5f67, #fc6f5e, #ff8452, #ff9b48, #feb242, #f6c944);
-            display: flex;
-        }
-
-        .gray-circle {
-            width: 68px;
-            height: 68px;
-            border-radius: 70%;
-            background: lightgray;
-            display: flex;
-        }
 
         .empty-circle .big-photo-container {
             margin: 2px;
@@ -192,30 +150,6 @@
             object-fit: cover;
         }
 
-        #feed-container {
-            width: 480px;
-            margin-top: 10px;
-            margin-right: 300px;
-            position: absolute
-        }
-
-
-        #feed {
-            border: 1px solid rgb(220, 220, 220);
-            border-radius: 5px;
-            background: white;
-            height: 100%;
-            margin-top: 10px;
-
-        }
-
-        .gray-text {
-            color: rgb(150, 150, 150)
-        }
-
-        .profile {
-            padding: 10px;
-        }
 
         .profile > div:first-of-type {
             margin-right: 10px;
@@ -237,54 +171,10 @@
             margin-right: 15px;
         }
 
-        .small-photo-container {
-            width: 40px;
-            height: 40px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-
-        .feed-photo-container {
-            width: 100%;
-        }
-
-        #feed-photo {
-            width: 100%;
-        }
-
         #feed-icons span {
             margin-right: 10px;
         }
 
-        #friends {
-            width: 300px;
-            height: 400px;
-            background: none;
-            margin-top: 10px;
-            margin-left: 500px;
-            position: fixed;
-        }
-
-        .friend-list {
-            padding: 10px 5px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between
-        }
-
-        .friend-left-box {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .friend-info {
-            margin-left: 10px;
-        }
-
-        .copyright {
-            margin-top: 30px;
-        }
 
         .modal-overlay {
             width: 100%;
@@ -427,7 +317,7 @@
                 width: 73px;
             }
 
-            #main-container {
+            #profile-container {
                 margin-left: 73px;
             }
 
@@ -449,18 +339,8 @@
         }
 
         @media only screen and (max-width: 850px) {
-            #main-container, #feed, #story {
+            #profile-container {
                 width: 100%;
-            }
-
-            #feed-container {
-                width: 480px;
-                margin: 0;
-            }
-
-
-            #friends {
-                display: none;
             }
 
             .modal-window {
@@ -469,7 +349,7 @@
 
             @media only screen and (max-width: 480px) {
 
-                #main-container {
+                #profile-container {
                     width: 100%;
                 }
 
@@ -552,6 +432,7 @@
 </nav>
 <!--navbar end-->
 
+
 <!--Modal window-->
 <div class="modal-overlay">
     <div id="modal-close-button"><span class="material-symbols-outlined">close</span></div>
@@ -594,153 +475,40 @@
 </div>
 <!--Modal window end-->
 
-<div id="main-container">
-    <div id="feed-container">
-        <!--story div-->
-        <div id="story">
-            <div class="story-container">
-                <div class="rainbow-circle">
-                    <div class="empty-circle">
-                        <div class="big-photo-container"><img alt="story-photo" class="photo"
-                                                              src="https://static.wikia.nocookie.net/414489b4-4488-4f3b-8df8-290c0a3788b5/scale-to-width/755">
 
-                        </div>
-                    </div>
-                </div>
-                <div>mando</div>
+<div id="profile-container">
+    <div id="profile-box" style="display:flex; flex-direction: row; justify-content: center;">
+        <div id="big-profile-image">
+            <div class="big-photo-container"><img class="photo" src={{ user.profile_image }}></div>
+        </div>
+        <div id="profile-info-box"
+             style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div id="user-id-box" style="display:flex; flex-direction: row;">
+                <div>{{ user.user_id }}</div>
+                <button>Profil bearbeiten</button>
+                <div>Setting button</div>
             </div>
-            <div class="story-container">
-                <div class="gray-circle">
-                    <div class="empty-circle">
-                        <div class="big-photo-container"><img alt="story-photo" class="photo"
-                                                              src="https://i.pinimg.com/736x/18/70/28/1870286df48feb862c26e7437707683d--vader-helmet-darth-vader-star-wars.jpg">
-                        </div>
-                    </div>
-                </div>
-                <div>DarthV</div>
+            <div id=" follower-box" style="display:flex; flex-direction: row;">
+                <div><span id="number-of-feeds">62</span> Beiträge</div>
+                <div><span id="number-of-followers">15</span> Follower</div>
+                <div><span id="number-of-following">34</span> abonniert</div>
+            </div>
+            <div id="profile-info" style="display:flex; flex-direction: column">
+                <div>{{ user.user_name }}</div>
+                <div>Hey! I'm me.</div>
             </div>
         </div>
-        <!--story div end-->
-
-        <!-- feed box -->
-        {% for feed in feed_list %}
-            <div id="feed">
-                <div class="profile" style="display:flex; flex-direction: row; align-items: center;">
-                    <div class="small-photo-container"><img alt="profile-photo" class="photo"
-                                                            src={{ feed.profile_image }}>
-                    </div>
-                    <div style="display:flex; flex-direction: column">
-                        <div><b>{{ feed.user_id }}</b></div>
-                    </div>
-                </div>
-                <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
-                                                       src="{% get_media_prefix %}{{ feed.image }}">
-                </div>
-                <div style="padding: 10px;">
-                    <div style="display:flex; flex-direction: row; justify-content: space-between">
-                        <div id="feed-icons" style="display:flex; flex-direction: row; width: 100px">
-                            <span class="material-symbols-rounded">favorite</span>
-                            <span class="material-symbols-rounded">chat_bubble</span>
-                            <span class="material-symbols-rounded">send</span>
-                        </div>
-                        <div>
-                            <span class="material-symbols-rounded">bookmark</span>
-                        </div>
-                    </div>
-                    <div>
-                        <div style="padding: 5px 0;"><b>Gefällt {{ feed.like_count }} Mal</b></div>
-                        <div><span
-                                style="margin-right:5px;"><b>{{ feed.user_id }}</b></span><span>{{ feed.content }}</span><span
-                                style="margin-left: 15px;" class="gray-text">mehr</span>
-                        </div>
-                        <div class="gray-text" style="padding: 5px 0">Alle 20 Kommentare ansehen</div>
-                        <div style="font-size: 80%"><span style="margin-right: 15px;"
-                                                          class="gray-text">VOR 3 STUNDEN</span><span><b>Übersetzung anzeigen</b></span>
-                        </div>
-                    </div>
-                </div>
-                <div style="padding: 10px 5px; display: flex; flex-direction: row; justify-content: space-around; border:2px solid #fafafa;">
-                    <span style="margin-right: 5px" class="material-symbols-rounded">sentiment_satisfied</span>
-                    <label>
-                        <input style="background: none; border: none; width: 400px" placeholder="Write a comment">
-                    </label>
-                    <button>Send</button>
-                </div>
-            </div>
-        {% endfor %}
-        <!--feed box end-->
     </div>
-
-    <!--friends recommend-->
-    <div id="friends">
-        <div id="myprofile"
-             style="display: flex; flex-direction: row; justify-content: space-between; padding: 15px 0;">
-            <div style="display: flex; flex-direction: row">
-                <div style="margin-right: 5px" class="big-photo-container">
-                    <img alt="my-profile-photo" class="photo"
-                         src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
-                </div>
-                <div id="myprofile-info" style="text-align: center; vertical-align: middle;">
-                    <div>{{ user.user_id }}</div>
-                    <div>{{ user.user_name }}</div>
-                </div>
-            </div>
-            <button>Wechseln</button>
+    <div id="profile-feed-box">
+        <div id="profile-feed-nav">
+            <div>BEITRÄGE</div>
+            <div>GESPEICHERT</div>
+            <div>MARKIERT</div>
         </div>
-        <div style="display: flex; flex-direction: row; justify-content: space-between; font-weight: 600; margin-top:5px;"><span
-                class="gray-text" style="font-size:105%">Vorschläge für dich</span><span>Alle ansehen</span>
+        <div id="profile-feed">
+            <div><img alt="#" src="#"></div>
         </div>
-        <div id="friend-recommend" style="margin-top:5px;">
-            <div class="friend-list">
-                <div class="friend-left-box">
-                    <div class="small-photo-container">
-                        <img alt="friend-image" class="photo"
-                             src="https://thypix.com/wp-content/uploads/2021/11/sponge-bob-profile-picture-thypix-m.jpg">
-                    </div>
-                    <div class="friend-info">
-                        <div>zzung.yeong_kochen</div>
-                        <div class="gray-text">heeeeeseung_lee ist Follower</div>
-                    </div>
-                </div>
-                <button>Folgen</button>
-            </div>
-            <div class="friend-list">
-                <div class="friend-left-box">
-                    <div class="small-photo-container">
-                        <img alt="friend-image" class="photo"
-                             src="https://i.etsystatic.com/36532523/r/il/97ae46/4078306713/il_340x270.4078306713_n74s.jpg">
-                    </div>
-                    <div class="friend-info">
-                        <div>pinkHair1010</div>
-                        <div class="gray-text">mando ist Follower</div>
-                    </div>
-                </div>
-                <button>Folgen</button>
-            </div>
-            <div class="friend-list">
-                <div class="friend-left-box">
-                    <div class="small-photo-container">
-                        <img alt="friend-image" class="photo"
-                             src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png">
-                    </div>
-                    <div class="friend-info">
-                        <div>hi_samantha</div>
-                        <div class="gray-text">DarthV ist Follower</div>
-                    </div>
-                </div>
-                <button>Folgen</button>
-            </div>
-        </div>
-        <footer>
-            <div>Info · Hilfe · Presse · API · Jobs · Datenrichtlinie ·</div>
-            <div>Nutzungsbedingungen und Impressum ·</div>
-            <div>NetzDG/UrhDaG/Ranking von Inhalten · Standorte ·</div>
-            <div>Sparache</div>
-            <div class="copyright">© 2022 INSTAGRAM FROM META</div>
-        </footer>
     </div>
-
-    <!--friends recommend end-->
 </div>
 
 <script>

@@ -26,6 +26,23 @@ class Main(APIView):
         return render(request, "hyeonstagram/main.html", context=dict(feed_list=feed_list, user=user))
 
 
+class Profile(APIView):
+    def get(self, request):
+        feed_list = Feed.objects.all().order_by('-id')
+
+        email = request.session["email"]
+
+        if email is None:
+            return render(request, "user/login.html")
+
+        user = User.objects.filter(email=email).first()
+
+        if user is None:
+            return render(request, "user/login.html")
+
+        return render(request, "hyeonstagram/profile.html", context=dict(feed_list=feed_list, user=user))
+
+
 class UploadFeed(APIView):
     def post(self, request):
         file = request.FILES["file"]
