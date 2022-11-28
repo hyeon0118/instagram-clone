@@ -229,6 +229,14 @@
             overflow: hidden;
         }
 
+        #nav-profile-photo-container {
+            width: 30px;
+            height: 30px;
+            border-radius: 70%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
         .small-photo-container {
             width: 40px;
             height: 40px;
@@ -483,6 +491,7 @@
 </head>
 
 <body>
+
 <!--navbar-->
 <nav>
     <a href="#">
@@ -523,6 +532,15 @@
             <div id="nav-bar-add-box" class="nav-list"><span id="add-circle"
                                                              class="nav-icon material-symbols-rounded bottom-nav">add_circle</span><span
                     class="icon-text">Erstellen</span></div>
+        </a>
+        <a href="#">
+            <div class="nav-list">
+                <div id="nav-profile-photo-container">
+                    <img alt="nav-profile" class="photo"
+                         src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large"></div>
+                <span class="icon-text">Profile</span>
+
+            </div>
         </a>
     </div>
     <div style="position:absolute; bottom:30px; width:100%;">
@@ -613,7 +631,6 @@
                     </div>
                     <div style="display:flex; flex-direction: column">
                         <div><b>{{ feed.user_id }}</b></div>
-                        <!--<div>user location</div> 나중에 추가하기-->
                     </div>
                 </div>
                 <div class="feed-photo-container"><img alt="feed-photo" id="feed-photo"
@@ -664,8 +681,8 @@
                          src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
                 </div>
                 <div id="myprofile-info" style="text-align: center; vertical-align: middle;">
-                    <div>muzikmusiker</div>
-                    <div>Hyeonji Sung</div>
+                    <div>{{ user.user_id }}</div>
+                    <div>{{ user.user_name }}</div>
                 </div>
             </div>
             <button>Wechseln</button>
