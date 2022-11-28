@@ -321,6 +321,9 @@
                 margin-left: 73px;
             }
 
+            #nav-profile-photo-container {
+                margin-right: 0;
+            }
 
             .icon-logo {
                 display: flex;
@@ -417,7 +420,7 @@
             <div class="nav-list">
                 <div id="nav-profile-photo-container">
                     <img alt="nav-profile" class="photo"
-                         src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large"></div>
+                         src="{{ user.profile_image }}"></div>
                 <span class="icon-text">Profile</span>
 
             </div>
@@ -479,7 +482,7 @@
 <div id="profile-container">
     <div id="profile-box" style="display:flex; flex-direction: row; justify-content: center;">
         <div id="big-profile-image">
-            <div class="big-photo-container"><img class="photo" src={{ user.profile_image }}></div>
+            <div class="big-photo-container"><img class="photo" src="{{ user.profile_image }}"></div>
         </div>
         <div id="profile-info-box"
              style="display:flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -489,24 +492,24 @@
                 <div>Setting button</div>
             </div>
             <div id=" follower-box" style="display:flex; flex-direction: row;">
-                <div><span id="number-of-feeds">62</span> Beiträge</div>
-                <div><span id="number-of-followers">15</span> Follower</div>
-                <div><span id="number-of-following">34</span> abonniert</div>
+                <div>{{ user.feed_number }} Beiträge</div>
+                <div>{{ user.follower_number }} Follower</div>
+                <div>{{ user.following_number }} abonniert</div>
             </div>
             <div id="profile-info" style="display:flex; flex-direction: column">
                 <div>{{ user.user_name }}</div>
-                <div>Hey! I'm me.</div>
+                <div>{{ user.profile_text }}</div>
             </div>
         </div>
     </div>
-    <div id="profile-feed-box">
-        <div id="profile-feed-nav">
-            <div>BEITRÄGE</div>
-            <div>GESPEICHERT</div>
-            <div>MARKIERT</div>
+    <div id="profile-feed-box" style="display:flex; flex-direction: column">
+        <div id="profile-feed-nav" style="display: flex; flex-direction: row; justify-content: center">
+            <div class="profile-feed-nav-list">BEITRÄGE</div>
+            <div class="profile-feed-nav-list">GESPEICHERT</div>
+            <div class="profile-feed-nav-list">MARKIERT</div>
         </div>
         <div id="profile-feed">
-            <div><img alt="#" src="#"></div>
+            feed box
         </div>
     </div>
 </div>
@@ -631,13 +634,13 @@
             processData: false,
             contentType: false,
             success: function (data) {
-                console.log("성공");
+                console.log("success");
             },
             error: function (request, status, error) {
-                console.log("에러");
+                console.log("error");
             },
             complete: function () {
-                console.log("완료");
+                console.log("complete");
                 location.replace("/main")
             },
         })

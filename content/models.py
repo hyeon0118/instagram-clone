@@ -7,7 +7,7 @@ class Feed(models.Model):
     image = models.TextField()
     profile_image = models.TextField()
     user_id = models.TextField()
-    like_count = models.IntegerField()
+    like_count = models.IntegerField(default="0")
 
 
 class User(models.Model):

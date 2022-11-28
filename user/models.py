@@ -8,6 +8,10 @@ class User(AbstractBaseUser):
     user_id = models.CharField(max_length=24, unique=True)
     user_name = models.CharField(max_length=24)
     email = models.EmailField(unique=True)
+    profile_text = models.TextField(default=" ")
+    feed_number = models.IntegerField(default="0")
+    follower_number = models.IntegerField(default="0")
+    following_number = models.IntegerField(default="0")
 
     USERNAME_FIELD = "user_id"
 
