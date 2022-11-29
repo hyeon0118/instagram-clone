@@ -5,384 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
     <title>hyeonstagram</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="{% static 'default.css' %}">
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link rel="stylesheet" href="{% static 'modal.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        html, body {
-            min-height: 100%;
-        }
-
-        body {
-            background: #fafafa;
-            font-size: 13px;
-        }
-
-        a {
-            color: black;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: black !important;
-        }
-
-        b {
-            font-weight: 600;
-        }
-
-        input:focus {
-            outline: none;
-        }
-
-        button {
-            background: none;
-            border: none;
-            color: #4285F4;
-            font-weight: 600;
-        }
-
-        footer {
-            font-size: 80%;
-            margin: 30px 0;
-            color: rgb(200, 200, 200);
-        }
-
-        nav {
-            position: fixed;
-            width: 245px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            background: white;
-            border-right: 1px solid lightgray;
-        }
-
-        #icon-logo-container {
-            padding: 5px 10px;
-            display: flex;
-            max-width: 100%;
-            height: 50px;
-            margin: 50px 0;
-            position: absolute;
-            left: 13px;
-            border-radius: 25px;
-            align-items: center;
-        }
-
-        #icon-logo-container img {
-            max-width: 100%;
-        }
-
-        #icon-container {
-            margin-top: 100px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            height: 400px;
-        }
-
-        .basic-logo {
-            height: 27px;
-        }
-
-        .nav-list {
-            max-width: 100%;
-            height: 50px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            border-radius: 25px;
-            margin: 0 10px;
-            padding: 5px 10px;
-        }
-
-        .nav-list:hover {
-            color: black;
-            background: rgb(250, 250, 250);
-        }
-
-        .nav-icon {
-            margin-right: 15px;
-            font-size: 30px;
-        }
-
-        .icon-text {
-            font-size: 16px;
-        }
-
-        .icon-logo {
-            display: none;
-        }
-
-        #searchbar {
-            display: none;
-        }
-
-        #profile-container {
-            margin-left: 245px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            padding-top: 20px;
-            z-index: -2;
-        }
-
-        .big-photo-container {
-            width: 60px;
-            height: 60px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-
-        .empty-circle .big-photo-container {
-            margin: 2px;
-        }
-
-        .photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-
-        .profile > div:first-of-type {
-            margin-right: 10px;
-        }
-
-
-        .smallest-photo-container {
-            width: 20px;
-            height: 20px;
-            border-radius: 70%;
-            overflow: hidden;
-        }
-
-        #nav-profile-photo-container {
-            width: 30px;
-            height: 30px;
-            border-radius: 70%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-
-        #feed-icons span {
-            margin-right: 10px;
-        }
-
-
-        .modal-overlay {
-            width: 100%;
-            height: 100%;
-            display: none;
-            position: absolute;
-            left: 0;
-            right: 0;
-            align-items: center;
-            justify-content: center;
-            background: rgb(0, 0, 0, 0.8);
-            backdrop-filter: blur(1.5px);
-        }
-
-        .modal-window {
-            background: white;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(13.5px);
-            -webkit-backdrop-filter: blur(13.5px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            min-width: 300px;
-            width: 50%;
-            max-width: 600px;
-            min-height: 500px;
-            height: 50%;
-            position: relative;
-        }
-
-        #modal-top {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid lightgray;
-        }
-
-        .modal-top-icons {
-            cursor: pointer;
-        }
-
-
-        #modal-close-button {
-            color: white;
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 15px;
-            cursor: pointer;
-        }
-
-        #modal-close-button span {
-            font-size: 27px;
-        }
-
-        #before-photo-drop-zone {
-            display: flex;
-            position: relative;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-
-        }
-
-        .after-photo {
-            visibility: hidden;
-        }
-
-        #drop-zone {
-            display: flex;
-            position: relative;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-        }
-
-        #add-photo-text {
-            font-size: 20px;
-            font-weight: 300;
-            margin: 10px 0;
-        }
-
-        #add-photo-button {
-            color: white;
-            font-size: 15px;
-            font-weight: 500;
-            background: rgb(62, 140, 228);
-            padding: 5px 10px;
-            margin-top: 10px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        #feed-edit-container {
-            display: none;
-            flex-direction: column;
-            height: 100%;
-            position: relative;
-            padding: 0 10px;
-            border-left: 1px solid lightgray;
-        }
-
-        #feed-text-input {
-            height: 90%;
-        }
-
-        #feed-textarea {
-            border: none;
-            width: 100%;
-            height: 90%;
-            color: lightgray;
-        }
-
-        #feed-textarea:focus {
-            border: none;
-            overflow: hidden;
-            outline: none;
-            -webkit-box-shadow: none;
-            -moz-box-shadow: none;
-            box-shadow: none;
-            resize: none;
-            color: black;
-        }
-
-        #drop-zone-profile {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            padding: 20px 0;
-        }
-
-        .profile-feed-nav-list {
-            margin: 0 15px;
-        }
-
-        .follower-box-list {
-            margin-right: 10px;
-            font-size: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        @media only screen and (max-width: 1200px) {
-            nav {
-                width: 73px;
-            }
-
-            #profile-container {
-                margin-left: 73px;
-            }
-
-            #nav-profile-photo-container {
-                margin-right: 0;
-            }
-
-            .icon-logo {
-                display: flex;
-                width: 25px;
-            }
-
-
-            #icon-logo-container:hover {
-                background: rgb(250, 250, 250);
-                width: 50px;
-            }
-
-            .basic-logo, .icon-text {
-                display: none;
-            }
-        }
-
-        @media only screen and (max-width: 850px) {
-            #profile-container {
-                width: 100%;
-            }
-
-            .modal-window {
-                width: 480px;
-            }
-
-            @media only screen and (max-width: 480px) {
-
-                #profile-container {
-                    width: 100%;
-                }
-
-                #icon-container {
-                    display: none;
-                }
-
-                .modal-window {
-                    width: 400px;
-                }
-
-                #searchbar {
-                    display: flex;
-                }
-            }
-
-        }
-    </style>
 </head>
 
 <body>
@@ -399,7 +28,7 @@
 
         </div>
     </a>
-    <input style="width:300px" class="hidden form-control me-2" id="searchbar"
+    <input class="hidden form-control me-2" id="searchbar"
            type="search" placeholder="Search" aria-label="Search">
     <div id="icon-container">
         <a href="#">
@@ -438,7 +67,7 @@
             </div>
         </a>
     </div>
-    <div style="position:absolute; bottom:30px; width:100%;">
+    <div id="nav-list-menu-icon">
         <a href="#">
             <div class="nav-list"><span class="nav-icon material-symbols-rounded">menu</span><span
                     class="icon-text">Mehr</span></div>
@@ -456,16 +85,15 @@
             <div>
                 <span class="after-photo modal-top-icons material-symbols-outlined">arrow_back</span>
             </div>
-            <div id="modal-window-title" style="text-align: center;">
+            <div id="modal-window-title">
                 Neuen Beitrag erstellen
             </div>
-            <button id="feed-create-button" style="color:rgb(62, 140, 228); font-weight:600;"
-                    class="after-photo modal-top-icons">
+            <button id="feed-create-button" class="after-photo modal-top-icons">
                 Teilen
             </button>
         </div>
         <div id="drop-zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">
-            <div id="feed-edit-container" class="after-photo" style="display:none;">
+            <div id="feed-edit-container" class="after-photo">
                 <div id="drop-zone-profile">
                     <div class="smallest-photo-container"><img class="photo"
                                                                src="https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large">
@@ -478,60 +106,48 @@
                 </div>
             </div>
             <div id="before-photo-drop-zone">
-                <div id="add-photo-icon" class="before-photo material-symbols-outlined" style="font-size:100px">
+                <div id="add-photo-icon" class="before-photo material-symbols-outlined">
                     add_photo_alternate
                 </div>
                 <div id="add-photo-text" class="before-photo">Ziehe Fotos und Videos hierher</div>
                 <div id="add-photo-button" class="before-photo">Vom Computer auswählen</div>
             </div>
         </div>
-
     </div>
 </div>
 <!--Modal window end-->
 
 
-<div id="profile-container" style="padding-top: 50px;">
-    <div id="profile-box"
-         style="width: 90%; max-width: 600px; display:flex; flex-direction: row; margin-bottom: 50px;">
-        <div id="big-profile-image" style="margin-right: 50px;">
-            <div class="big-photo-container" style="height: 130px; width: 130px;"><img class="photo"
-                                                                                       src="{{ user.profile_image }}">
+<div id="profile-container">
+    <div id="profile-box">
+        <div id="big-profile-image">
+            <div class="big-photo-container" style="height: 130px; width: 130px;">
+                <img alt="profile_photo" class="photo" src="{{ user.profile_image }}">
             </div>
         </div>
-        <div id="profile-info-box"
-             style="display:flex; flex-direction: column; align-items: center;">
-            <div id="user-id-box"
-                 style="width: 100%; display:flex; flex-direction: row; align-items: center;">
-                <div style="font-size: 30px; font-weight: 300; margin-right: 20px">{{ user.user_id }}</div>
-                <button style="color: black; border: 1px solid lightgray; padding: 0 10px; height: 30px; border-radius: 7px;">
+        <div id="profile-info-box">
+            <div id="user-id-box">
+                <div>{{ user.user_id }}</div>
+                <button>
                     Profil bearbeiten
                 </button>
-                <div style="margin-left: 10px;"><span class="nav-icon material-symbols-rounded">settings</span>
+                <div><span class="nav-icon material-symbols-rounded">settings</span>
                 </div>
             </div>
             <div id=" follower-box"
-                 style="width: 100%; justify-content: space-between; margin: 20px 0; display:flex; flex-direction: row;">
-                <div class="follower-box-list"><span
-                        style="font-weight: 500; margin-right: 5px;">{{ user.feed_number }} </span> Beiträge
-                </div>
-                <div class="follower-box-list"><span
-                        style="font-weight: 500; margin-right: 5px;">{{ user.follower_number }} </span>
-                    Follower
-                </div>
-                <div class="follower-box-list"><span
-                        style="font-weight: 500; margin-right: 5px;">{{ user.following_number }} </span>
-                    abonniert
-                </div>
+                 style="display: flex; flex-direction: row; margin: 20px 0;">
+                <div class="follower-box-list"><span>{{ user.feed_number }}</span> Beiträge</div>
+                <div class="follower-box-list"><span>{{ user.follower_number }}</span>Follower</div>
+                <div class="follower-box-list"><span>{{ user.following_number }}</span>abonniert</div>
             </div>
-            <div id="profile-info" style="display:flex; flex-direction: column; width: 100%; ">
-                <div style="font-size: 15px; font-weight: 700;">{{ user.user_name }}</div>
-                <div style="font-size: 15px">{{ user.profile_text }}</div>
+            <div id="profile-info">
+                <div>{{ user.user_name }}</div>
+                <div>{{ user.profile_text }}</div>
             </div>
         </div>
     </div>
-    <div id="profile-feed-box" style="display:flex; flex-direction: column">
-        <div id="profile-feed-nav" style="display: flex; flex-direction: row; justify-content: center">
+    <div id="profile-feed-box">
+        <div id="profile-feed-nav">
             <div class="profile-feed-nav-list">BEITRÄGE</div>
             <div class="profile-feed-nav-list">GESPEICHERT</div>
             <div class="profile-feed-nav-list">MARKIERT</div>

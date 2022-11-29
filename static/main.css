@@ -1,0 +1,225 @@
+#main-container {
+    margin-left: 245px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+    z-index: -2;
+}
+
+#story {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    background: white;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.story-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 10px;
+    justify-content: flex-start;
+}
+
+.empty-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 70%;
+    background: white;
+    margin: 2px;
+}
+
+.rainbow-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 70%;
+    background-image: linear-gradient(to left bottom, #c128bf, #d324ad, #e0299c, #e8348c, #ec427e, #f45072, #fa5f67, #fc6f5e, #ff8452, #ff9b48, #feb242, #f6c944);
+    display: flex;
+}
+
+.gray-circle {
+    width: 68px;
+    height: 68px;
+    border-radius: 70%;
+    background: lightgray;
+    display: flex;
+}
+
+.empty-circle {
+    margin: 2px;
+}
+
+#feed-container {
+    width: 480px;
+    margin-top: 10px;
+    margin-right: 300px;
+    position: absolute
+}
+
+
+#feed {
+    border: 1px solid rgb(220, 220, 220);
+    border-radius: 5px;
+    background: white;
+    height: 100%;
+    margin-top: 10px;
+
+}
+
+.profile {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile > div:first-of-type {
+    margin-right: 10px;
+}
+
+.profile > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+#under-feed-image {
+    padding: 10px;
+}
+
+#under-feed-image > div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+#feed-icons {
+    display: flex;
+    flex-direction: row;
+    width: 100px
+}
+
+.feed-photo-container {
+    width: 100%;
+}
+
+#feed-photo {
+    width: 100%;
+}
+
+#like-text {
+    padding: 5px 0;
+}
+
+#feed-icons span {
+    margin-right: 10px;
+}
+
+#feed-content > span:first-child {
+    margin-right: 5px;
+}
+
+#feed-content > span:last-child {
+    margin-left: 15px;
+}
+
+#number-of-comment {
+    padding: 5px 0;
+}
+
+#feed-time {
+    font-size: 80%
+}
+
+#feed-time > span:first-child {
+    margin-right: 15px;
+}
+
+#write-comment {
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid #fafafa;
+}
+
+#write-comment span {
+    margin-right: 5px;
+}
+
+#write-comment input {
+    background: none;
+    border: none;
+    width: 400px
+}
+
+#my-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 0;
+}
+
+#my-profile > div:first-child {
+    display: flex;
+    flex-direction: row
+}
+
+#my-profile > div:first-child > div:first-child {
+    margin-right: 5px;
+}
+
+#my-profile-into {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#friends-recommend-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+#friends-recommend-text > span:first-child {
+    font-size: 105%
+}
+
+#friends-recommend {
+    margin-top: 5px;
+}
+
+#friends {
+    width: 300px;
+    height: 400px;
+    background: none;
+    margin-top: 10px;
+    margin-left: 500px;
+    position: fixed;
+}
+
+.friend-list {
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.friend-left-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.friend-info {
+    margin-left: 10px;
+}
+
+.copyright {
+    margin-top: 30px;
+}

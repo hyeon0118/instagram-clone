@@ -1,0 +1,153 @@
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0, 0.8);
+    backdrop-filter: blur(1.5px);
+}
+
+.modal-window {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur(13.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    min-width: 300px;
+    width: 50%;
+    max-width: 600px;
+    min-height: 500px;
+    height: 50%;
+    position: relative;
+}
+
+#modal-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.modal-top-icons {
+    cursor: pointer;
+}
+
+
+#modal-close-button {
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+#modal-close-button span {
+    font-size: 27px;
+}
+
+#before-photo-drop-zone {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+}
+
+.after-photo {
+    visibility: hidden;
+}
+
+#drop-zone {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+#add-photo-text {
+    font-size: 20px;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+#add-photo-icon {
+    font-size: 100px;
+}
+
+#add-photo-button {
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    background: rgb(62, 140, 228);
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#feed-edit-container {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    padding: 0 10px;
+    border-left: 1px solid lightgray;
+}
+
+#feed-text-input {
+    height: 90%;
+}
+
+#feed-textarea {
+    border: none;
+    width: 100%;
+    height: 90%;
+    color: lightgray;
+}
+
+#feed-textarea:focus {
+    border: none;
+    overflow: hidden;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+    color: black;
+}
+
+#drop-zone-profile {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.modal-window {
+    width: 480px;
+}
+
+#modal-window-title {
+    text-align: center;
+}
+
+#feed-create-button {
+    color: rgb(62, 140, 228);
+    font-weight: 600;
+}
+
