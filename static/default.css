@@ -6,6 +6,7 @@ html, body {
 body {
     background: #fafafa;
     font-size: 13px;
+    margin: 0 !important;
 }
 
 a {
@@ -105,10 +106,6 @@ nav {
     display: none;
 }
 
-#searchbar {
-    display: none;
-    width: 300px;
-}
 
 #nav-list-menu-icon {
     position: absolute;
@@ -212,15 +209,7 @@ nav {
         width: 100%;
     }
 
-    #icon-container {
-        display: none;
-    }
-
     .modal-window {
         width: 400px;
-    }
-
-    #searchbar {
-        display: flex;
     }
 }

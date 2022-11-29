@@ -3,119 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registrieren</title>
+    {% load static %}
+    <title>Anmelden</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'default.css' %}">
+    <link rel="stylesheet" href="{% static 'user.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-        html {
-            font-size: 13px;
-        }
-
-        a {
-            text-decoration: none;
-            font-weight: 600;
-            color: gray;
-        }
-
-        body {
-            background: #fafafa;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: gray;
-
-        }
-
-        input {
-            padding: 8px;
-            margin-bottom: 10px;
-            background-color: #fafafa;
-            border: 1px solid lightgray;
-            border-radius: 3px;
-        }
-
-        #login-button {
-            background-color: rgb(65, 147, 239);
-            color: white;
-            border-radius: 5px;
-            border: none;
-            width: 100%;
-            padding: 5px 0;
-        }
-
-        #facebook-login-button {
-            color: rgb(61, 80, 129);
-            background: none;
-            border: none;
-            width: 100%;
-            padding: 5px 0;
-        }
-
-        #or-div {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        .or-line {
-            width: 100%;
-            height: 0;
-            border-top: 1px solid gray;
-        }
-
-
-        #logo-box {
-            height: 200px;
-            font-size: 20px;
-            font-weight: 600;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-evenly;
-        }
-
-        #all-container {
-            width: 350px;
-            text-align: center;
-        }
-
-        #join-container, #login-container {
-            width: 100%;
-            border: 1px solid lightgray;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            padding: 35px;
-            margin-bottom: 15px;
-        }
-
-        #login-container {
-            height: 600px;
-        }
-
-        #login-input {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            margin: 20px 0;
-        }
-    </style>
 
 </head>
 <body>
 <div id="all-container">
     <div id="login-container">
         <div id="logo-box">
-            <div style="margin-bottom: 10px;"><img style="width:150px;"
-                                                   src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
+            <div><img alt="logo"
+                      src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
             </div>
         </div>
         <div id="login-input">
@@ -127,18 +29,18 @@
                 <input type="password" class="form-control" id="password-input" placeholder="Passwort">
                 <label for="password-input">Passwort</label>
             </div>
-            <button id="login-button" style="font-size: 15px; font-weight: 600; margin-top: 25px;">Weiter</button>
+            <button id="login-button">Weiter</button>
         </div>
-        <div id="or-div" style="margin-top: 20px;">
+        <div id="or-div">
             <div class="or-line"></div>
-            <div style="margin: 0 20px; font-weight: 600;">ODER</div>
+            <div id="or">ODER</div>
             <div class="or-line"></div>
         </div>
-        <button id="facebook-login-button" style="font-size: 15px; font-weight: 600; margin: 15px 0;">Mit Facebook
+        <button id="facebook-login-button">Mit Facebook
             anmelden
         </button>
-        <div><a style="font-size:13px; color:rgb(61, 80, 129); font-weight:400;" href="#">Passwort vergessen?</a></div>
-        <div style="margin: 20px 0; font-size:11px;">Das <a href="#">Melden von Inhalten, die deiner Ansicht nach im
+        <div><a id="forgot-password" href="#">Passwort vergessen?</a></div>
+        <div id="login-explanation-text">Das <a href="#">Melden von Inhalten, die deiner Ansicht nach im
             Sinne des
             Netzwerkdurchsetzungsgesetzes (NetzDG) rechtswidrig sind</a>, ist auch dann möglich, wenn du nicht
             eingeloggt bist.
@@ -146,10 +48,8 @@
 
 
     </div>
-    <div id="join-container">
-        <div style="color:black; font-size: 15px;">Du hast kein Konto? <a href="/user/join"
-                                                                          style="color:rgb(65, 147, 239); font-weight: 400;">Registieren</a>
-        </div>
+    <div id="login-register-box">
+        <div>Du hast kein Konto? <a href="/user/join">Registrieren</a></div>
     </div>
 </div>
 <script>
@@ -177,8 +77,6 @@
         })
     })
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+
 </body>
 </html>
