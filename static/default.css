@@ -1,6 +1,7 @@
 html, body {
     min-height: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
 }
 
 body {
@@ -159,12 +160,17 @@ nav {
 
 
 @media only screen and (max-width: 1200px) {
+    html, body {
+        width: 100%;
+    }
+
     nav {
         width: 73px;
     }
 
     #main-container {
         margin-left: 73px;
+        width: 100%;
     }
 
 

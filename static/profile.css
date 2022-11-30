@@ -99,6 +99,23 @@
     justify-content: center
 }
 
+#profile-feed-grid {
+    display: grid;
+    grid: auto / auto auto auto;
+}
+
+.profile-feed-grid-item {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    object-fit: contain;
+}
+
+.profile-feed-photo {
+    height: 100%;
+    width: 100%;
+}
+
 @media only screen and (max-width: 1200px) {
     nav {
         width: 73px;
