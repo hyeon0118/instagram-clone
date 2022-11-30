@@ -100,13 +100,15 @@
 
 #profile-feed-grid {
     display: grid;
-    grid: auto / auto auto auto;
+    grid: 200px / 200px 200px 200px;
+    justify-content: flex-start;
+    gap: 10px 10px;
 }
 
 .profile-feed-grid-item {
     width: 200px;
     height: 200px;
-    margin: 10px;
+    margin: 5px;
     object-fit: contain;
     position: relative;
 }
