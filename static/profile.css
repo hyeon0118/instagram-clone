@@ -6,7 +6,6 @@
     align-items: center;
     position: relative;
     padding-top: 20px;
-    z-index: -2;
 }
 
 .profile-feed-nav-list {
@@ -109,12 +108,23 @@
     height: 200px;
     margin: 10px;
     object-fit: contain;
+    position: relative;
 }
 
-.profile-feed-photo {
+.profile-feed-photo, .profile-feed-grid-item-overlay {
     height: 100%;
     width: 100%;
+    position: absolute;
 }
+
+.profile-feed-grid-item-overlay {
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
 
 @media only screen and (max-width: 1200px) {
     nav {

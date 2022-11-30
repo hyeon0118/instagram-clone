@@ -26,6 +26,11 @@ $('.nav-list').hover(function () {
     $(".nav-icon", this).css("transform", "scale(1)");
 })
 
+$('#user-id-box > button').click(function () {
+    console.log('clicked')
+})
+
+
 $('#drop-zone')
     .on("dragover", dragOver)
     .on("dragleave", dragOver)

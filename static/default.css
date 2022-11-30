@@ -1,7 +1,6 @@
 html, body {
     min-height: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    position: relative;
 }
 
 body {
@@ -32,6 +31,7 @@ button {
     border: none;
     color: #4285F4;
     font-weight: 600;
+    cursor: pointer;
 }
 
 footer {
