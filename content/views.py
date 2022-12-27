@@ -13,7 +13,7 @@ class Main(APIView):
     def get(self, request):
         feed_list = Feed.objects.all().order_by('-id')
 
-        email = request.session["email"]
+        email = request.session.get("email", None)
 
         if email is None:
             return render(request, "user/login.html")
@@ -28,7 +28,7 @@ class Main(APIView):
 
 class Profile(APIView):
     def get(self, request):
-        email = request.session["email"]
+        email = request.session.get("email", None)
         user = User.objects.filter(email=email).first()
         user_id = user.user_id
         user_feed_list = Feed.objects.filter(user_id=user_id)

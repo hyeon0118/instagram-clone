@@ -1,14 +1,15 @@
 html, body {
-    min-height: 100%;
+    height: 100%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    overflow-x: clip;
     position: relative;
 }
 
 body {
+    min-height: 100%;
     background: #fafafa;
     font-size: 13px;
     margin: 0 !important;
+    justify-content: center;
 }
 
 a {
@@ -50,6 +51,7 @@ nav {
     flex-direction: column;
     background: white;
     border-right: 1px solid lightgray;
+    z-index: 5;
 }
 
 #icon-logo-container {
@@ -195,16 +197,15 @@ nav {
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 900px) {
     #main-container, #feed, #story {
         width: 100%;
     }
 
     #feed-container {
         width: 480px;
-        margin: 0;
+        margin-right: 0;
     }
-
 
     #friends {
         display: none;

@@ -32,6 +32,12 @@ $('.profile-feed-grid-item').hover(function () {
     $(".profile-feed-grid-item-overlay", this).css("display", "none");
 })
 
+$('.profile-feed-nav-list').hover(function () {
+    $(this).css("border-top", "1px solid black");
+}, function () {
+    $(this).css("border-top", "1px solid lightgray");
+})
+
 
 $('#drop-zone')
     .on("dragover", dragOver)

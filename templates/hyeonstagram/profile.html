@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load static %}
-    <title>hyeonstagram</title>
+    <title>Instagram_clone</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Symbols+Rounded">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
@@ -18,53 +18,53 @@
 {% include 'nav.html' %}
 {% include 'modal.html' %}
 
-
-<div id="profile-container">
-    <div id="profile-box">
-        <div id="big-profile-image">
-            <div class="big-photo-container" style="height: 130px; width: 130px;">
-                <img alt="profile_photo" class="photo" src="{{ user.profile_image }}">
-            </div>
-        </div>
-        <div id="profile-info-box">
-            <div id="user-id-box">
-                <div>{{ user.user_id }}</div>
-                <button>
-                    Profil bearbeiten
-                </button>
-                <div><span class="nav-icon material-symbols-rounded">settings</span>
+<div id="profile-main-container">
+    <div id="profile-container">
+        <div id="profile-box">
+            <div id="big-profile-image">
+                <div class="big-photo-container" style="height: 130px; width: 130px;">
+                    <img alt="profile_photo" class="photo" src="{{ user.profile_image }}">
                 </div>
             </div>
-            <div id=" follower-box"
-                 style="display: flex; flex-direction: row; margin: 20px 0;">
-                <div class="follower-box-list"><span>{{ user.feed_number }}</span> Beiträge</div>
-                <div class="follower-box-list"><span>{{ user.follower_number }}</span>Follower</div>
-                <div class="follower-box-list"><span>{{ user.following_number }}</span>abonniert</div>
-            </div>
-            <div id="profile-info">
-                <div>{{ user.user_name }}</div>
-                <div>{{ user.profile_text }}</div>
-            </div>
-        </div>
-    </div>
-    <div id="profile-feed-nav">
-        <div class="profile-feed-nav-list"><span class="material-symbols-outlined">table</span>BEITRÄGE</div>
-        <div class="profile-feed-nav-list"><span class="material-symbols-outlined">bookmark</span>GESPEICHERT</div>
-        <div class="profile-feed-nav-list"><span class="material-symbols-outlined">account_box</span>MARKIERT</div>
-    </div>
-    <div id="profile-feed-grid">
-        {% for feed in user_feed_list %}
-            <div class="profile-feed-grid-item">
-                <img alt="photo" class="profile-feed-photo"
-                     src="{% get_media_prefix %}{{ feed.image }}">
-                <div class="profile-feed-grid-item-overlay">
-                    <div class="likes-count"><span class="material-symbols-rounded">favorite</span> 4</div>
-                    <div class="comments-count"><span class="material-symbols-rounded">mode_comment</span> 0</div>
+            <div id="profile-info-box">
+                <div id="user-id-box">
+                    <div>{{ user.user_id }}</div>
+                    <button>
+                        Profil bearbeiten
+                    </button>
+                    <div><span class="nav-icon material-symbols-rounded">settings</span>
+                    </div>
+                </div>
+                <div id=" follower-box"
+                     style="display: flex; flex-direction: row; margin: 20px 0;">
+                    <div class="follower-box-list"><span>{{ user.feed_number }}</span> Beiträge</div>
+                    <div class="follower-box-list"><span>{{ user.follower_number }}</span>Follower</div>
+                    <div class="follower-box-list"><span>{{ user.following_number }}</span>abonniert</div>
+                </div>
+                <div id="profile-info">
+                    <div>{{ user.user_name }}</div>
+                    <div>{{ user.profile_text }}</div>
                 </div>
             </div>
-        {% endfor %}
+        </div>
+        <div id="profile-feed-nav">
+            <div class="profile-feed-nav-list"><span class="material-symbols-outlined">table</span>BEITRÄGE</div>
+            <div class="profile-feed-nav-list"><span class="material-symbols-outlined">bookmark</span>GESPEICHERT</div>
+            <div class="profile-feed-nav-list"><span class="material-symbols-outlined">account_box</span>MARKIERT</div>
+        </div>
+        <div id="profile-feed-grid">
+            {% for feed in user_feed_list %}
+                <div class="profile-feed-grid-item">
+                    <img alt="photo" class="profile-feed-photo"
+                         src="{% get_media_prefix %}{{ feed.image }}">
+                    <div class="profile-feed-grid-item-overlay">
+                        <div class="likes-count"><span class="material-symbols-rounded">favorite</span> 4</div>
+                        <div class="comments-count"><span class="material-symbols-rounded">mode_comment</span> 0</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-
 </div>
 <script src="{% static 'main.js' %}"></script>
 </body>

@@ -1,15 +1,21 @@
-#profile-container {
+#profile-main-container {
     margin-left: 245px;
+    width: calc(100% - 245px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+#profile-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
     padding-top: 20px;
-}
-
-.profile-feed-nav-list {
-    margin: 0 15px;
+    max-width: 800px;
 }
 
 .follower-box-list {
@@ -95,8 +101,17 @@
 #profile-feed-nav {
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: space-around;
+    border-top: 1px solid lightgray;
+    position: relative;
+    padding: 0 80px;
 }
+
+.profile-feed-nav-list {
+    margin: 0 15px;
+    border-top: 1px solid lightgray;
+}
+
 
 #profile-feed-grid {
     display: grid;
@@ -129,60 +144,63 @@
 
 
 @media only screen and (max-width: 1200px) {
+    html, body {
+        width: 100%;
+    }
+
     nav {
         width: 73px;
     }
 
-    #profile-container {
+    #profile-main-container {
         margin-left: 73px;
+        width: calc(100% - 73px)
     }
 
-    #nav-profile-photo-container {
-        margin-right: 0;
-    }
 
     .icon-logo {
         display: flex;
         width: 25px;
     }
 
+    #icon-logo-container {
+        width: 30px;
+    }
 
     #icon-logo-container:hover {
         background: rgb(250, 250, 250);
-        width: 50px;
     }
 
     .basic-logo, .icon-text {
         display: none;
     }
+
+    #nav-profile-photo-container {
+        margin-right: 0;
+    }
 }
 
-@media only screen and (max-width: 850px) {
-    #profile-container {
+@media only screen and (max-width: 900px) {
+    #feed, #story {
+        width: 100%;
+    }
+
+    #feed-container {
+        width: 480px;
+        margin-right: 0;
+    }
+
+    #friends {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #profile-main-container {
         width: 100%;
     }
 
     .modal-window {
-        width: 480px;
+        width: 400px;
     }
-
-    @media only screen and (max-width: 480px) {
-
-        #profile-container {
-            width: 100%;
-        }
-
-        #icon-container {
-            display: none;
-        }
-
-        .modal-window {
-            width: 400px;
-        }
-
-        #searchbar {
-            display: flex;
-        }
-    }
-
 }

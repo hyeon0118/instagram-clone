@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: center;
     background: rgb(0, 0, 0, 0.8);
-    backdrop-filter: blur(1.5px);
+    backdrop-filter: blur(2px);
     z-index: 10;
 }
 
@@ -16,8 +16,8 @@
     background: white;
     display: flex;
     flex-direction: column;
-    backdrop-filter: blur(13.5px);
-    -webkit-backdrop-filter: blur(13.5px);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     min-width: 300px;
