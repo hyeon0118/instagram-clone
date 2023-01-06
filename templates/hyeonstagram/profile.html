@@ -17,24 +17,29 @@
 <body>
 {% include 'nav.html' %}
 {% include 'modal.html' %}
+{% include 'profile_modal.html' %}
 
 <div id="profile-main-container">
     <div id="profile-container">
         <div id="profile-box">
-            <div id="big-profile-image">
-                <div class="big-photo-container" style="height: 130px; width: 130px;">
-                    <img alt="profile_photo" class="photo" src="{{ user.profile_image }}">
+            <input type="file" id="img-upload" style="display:none">
+            <a href="#">
+                <div id="big-profile-image">
+                    <div class="big-photo-container" style="height: 130px; width: 130px;">
+                        <img alt="profile_photo" class="photo" src="{{ user.profile_image }}">
+                    </div>
                 </div>
-            </div>
+            </a>
             <div id="profile-info-box">
                 <div id="user-id-box">
                     <div>{{ user.user_id }}</div>
-                    <button id="profile_edit_button">
-                        <a href="../edit">
+                    <a href="../edit">
+                        <button id="profile_edit_button">
                             Profil bearbeiten
-                        </a>
-                    </button>
-                    <div><span class="nav-icon material-symbols-rounded">settings</span>
+                        </button>
+                    </a>
+                    <div id="setting-button"><a href="#"><span
+                            class="nav-icon material-symbols-rounded">settings</span></a>
                     </div>
                 </div>
                 <div id=" follower-box"

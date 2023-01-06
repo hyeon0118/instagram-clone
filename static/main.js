@@ -1,5 +1,23 @@
 let files;
 
+$("#setting-button").click(function () {
+    $("#profile-modal-overlay").css({
+        "display": "flex"
+    });
+})
+
+$(document).mouseup(function (e) {
+    let container = $("#profile-modal-window");
+
+    if (!container.is(e.target) && container.has(e.target).length === 0) {
+        $("#profile-modal-overlay").hide();
+    }
+})
+
+$("#big-profile-image").click(function () {
+    $("#img-upload").trigger('click');
+});
+
 $('#nav-bar-add-box').click(function () {
     $('.modal-overlay').css({
         "display": "flex"
@@ -15,9 +33,7 @@ $('#modal-close-button').click(function (event) {
         "display": "none"
     })
     alert('Wenn du jetzt abbrichst, werden deine Änderungen nicht gespeichert.')
-    if (event.dataTransfer.dropEffect !== 'none') {
-        $(this).remove();
-    }
+    window.location.reload();
 })
 
 $('.nav-list').hover(function () {
@@ -119,6 +135,7 @@ function ajax_send() {
     let profile_image = "https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large";
 
     let fd = new FormData();
+
     fd.append("file", file);
     fd.append("image", image);
     fd.append("content", content);
