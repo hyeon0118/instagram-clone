@@ -17,7 +17,7 @@
 <body>
 {% include 'nav.html' %}
 {% include 'modal.html' %}
-
+<input type="hidden" id="user-id" value="{{ user.user_id }}">
 <div id="main-container">
     <div id="feed-container">
         <!--story div-->
@@ -51,7 +51,7 @@
             <div id="feed">
                 <div class="profile">
                     <div class="small-photo-container"><img alt="profile-photo" class="photo"
-                                                            src={{ feed.profile_image }}>
+                                                            src={{ feed_user.profile_image }}>
                     </div>
                     <div>
                         <div><b>{{ feed.user_id }}</b></div>

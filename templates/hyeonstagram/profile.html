@@ -18,11 +18,14 @@
 {% include 'nav.html' %}
 {% include 'modal.html' %}
 {% include 'profile_modal.html' %}
-
+<input type="hidden" id="user-id" value="{{ user.user_id }}">
 <div id="profile-main-container">
     <div id="profile-container">
         <div id="profile-box">
-            <input type="file" id="img-upload" style="display:none">
+            <form method="POST" class="post-form" enctype="multipart/form-data" onchange="profile_update()">
+                {% csrf_token %}
+                <input type="file" id="img-upload" style="display:none">
+            </form>
             <a href="#">
                 <div id="big-profile-image">
                     <div class="big-photo-container" style="height: 130px; width: 130px;">

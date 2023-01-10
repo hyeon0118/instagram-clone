@@ -23,7 +23,8 @@ class Main(APIView):
         if user is None:
             return render(request, "user/login.html")
 
-        return render(request, "hyeonstagram/main.html", context=dict(feed_list=feed_list, user=user))
+        return render(request, "hyeonstagram/main.html",
+                      context=dict(feed_list=feed_list, user=user))
 
 
 class Profile(APIView):
@@ -64,8 +65,7 @@ class UploadFeed(APIView):
         image = uuid_name
         content = request.data.get("content")
         user_id = request.data.get("user_id")
-        profile_image = request.data.get("profile_image")
 
-        Feed.objects.create(image=image, content=content, user_id=user_id, profile_image=profile_image, like_count=0)
+        Feed.objects.create(image=image, content=content, user_id=user_id, like_count=0)
 
         return Response(status=200)

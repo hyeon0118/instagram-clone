@@ -18,6 +18,12 @@ $("#big-profile-image").click(function () {
     $("#img-upload").trigger('click');
 });
 
+function profile_update() {
+    let file = $('#img-upload')[0].files[0];
+    let file2 = $('#user-id')[0].value;
+    console.log(file2)
+}
+
 $('#nav-bar-add-box').click(function () {
     $('.modal-overlay').css({
         "display": "flex"
@@ -131,8 +137,7 @@ function ajax_send() {
     let file = files[0];
     let image = file.name;
     let content = $("#feed-textarea").val();
-    let user_id = "muzikmusiker";
-    let profile_image = "https://pbs.twimg.com/media/E9s0Z08UYAIxtI7?format=jpg&name=large";
+    let user_id = $("#user-id")[0].value;
 
     let fd = new FormData();
 
@@ -140,7 +145,6 @@ function ajax_send() {
     fd.append("image", image);
     fd.append("content", content);
     fd.append("user_id", user_id);
-    fd.append("profile_image", profile_image);
 
     $.ajax({
         url: "/content/upload",

@@ -10,7 +10,6 @@ a {
 
 body {
     background: #fafafa;
-    padding: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,10 +113,11 @@ button {
 #all-container {
     width: 350px !important;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 #join-container, #login-container {
-    width: 100%;
     border: 1px solid lightgray;
     background-color: white;
     display: flex;
@@ -135,7 +135,6 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 #register-login-box > div, #login-register-box > div {
@@ -159,9 +158,6 @@ button {
     margin: 20px 0;
 }
 
-#join-container {
-    height: 900px;
-}
 
 #join-input {
     display: flex;
