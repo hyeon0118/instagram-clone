@@ -1,3 +1,4 @@
+{% load static %}
 <nav>
     <a href="../main">
         <div id="icon-logo-container">
@@ -37,8 +38,14 @@
         <a href="../profile">
             <div class="nav-list">
                 <div id="nav-profile-photo-container">
-                    <img alt="nav-profile" class="photo"
-                         src="/media/default_profile_photo.png"></div>
+                    {% if user.profile_image != "/media/default_profile_photo.png" %}
+                        <img alt="nav-profile" class="photo"
+                             src="{% get_media_prefix %}{{ user.profile_image }}">
+                    {% else %}
+                        <img alt="nav-profile" class="photo"
+                             src={{ user.profile_image }}>
+                    {% endif %}
+                </div>
                 <span class="icon-text">Profile</span>
 
             </div>

@@ -39,7 +39,7 @@ class Profile(APIView):
             return render(request, "user/login.html")
         else:
             user_id = user.user_id
-            user_feed_list = Feed.objects.filter(user_id=user_id)
+            user_feed_list = Feed.objects.filter(user_id=user_id).order_by('-id')
 
         return render(request, "hyeonstagram/profile.html", context=dict(user_feed_list=user_feed_list, user=user))
 

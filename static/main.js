@@ -20,8 +20,30 @@ $("#big-profile-image").click(function () {
 
 function profile_update() {
     let file = $('#img-upload')[0].files[0];
-    let file2 = $('#user-id')[0].value;
-    console.log(file2)
+    let user_id = $('#user-id')[0].value;
+
+    let fd = new FormData();
+
+    fd.append("file", file);
+    fd.append("user_id", user_id);
+
+    $.ajax({
+        url: "/user/profile/upload",
+        data: fd,
+        method: "POST",
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            console.log("success");
+        },
+        error: function (request, status, error) {
+            console.log("error");
+        },
+        complete: function () {
+            console.log("complete");
+            location.replace("/profile")
+        },
+    });
 }
 
 $('#nav-bar-add-box').click(function () {

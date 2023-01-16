@@ -51,7 +51,7 @@
             <div id="feed">
                 <div class="profile">
                     <div class="small-photo-container"><img alt="profile-photo" class="photo"
-                                                            src={{ feed_user.profile_image }}>
+                                                            src="{% get_media_prefix %}{{ user.profile_image }}">
                     </div>
                     <div>
                         <div><b>{{ feed.user_id }}</b></div>
@@ -102,8 +102,13 @@
         <div id="my-profile">
             <div>
                 <div class="big-photo-container">
-                    <img alt="my-profile-photo" class="photo"
-                         src="/media/default_profile_photo.png">
+                    {% if user.profile_image != "/media/default_profile_photo.png" %}
+                        <img alt="my-profile-photo" class="photo"
+                             src="{% get_media_prefix %}{{ user.profile_image }}">
+                    {% else %}
+                        <img alt="my-profile-photo" class="photo"
+                             src={{ user.profile_image }}>
+                    {% endif %}
                 </div>
                 <div id="my-profile-info">
                     <div>{{ user.user_id }}</div>
